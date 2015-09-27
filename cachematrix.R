@@ -24,16 +24,12 @@ makeCacheMatrix <- function(x = matrix()) {
 # object where you saved the makeCacheMatrix function
 
 cacheSolve <- function(x, ...) {
-  # Return a matrix that is the inverse of 'x'
   inv = x$getinv()
-  #Check to see if it's already been calculated
-  if (!is.null(inv)){
-  #Message to let you know it has and that it's using cached data
-    message("using pre-cached data")
+  if (!is.null(inv)){                    #Check to see if it's already been calculated
+    message("using pre-cached data")     #Message to let you know it has and that it's using cached data
     return(inv)
   }
-  #Oh, it hasn't? better do it now!
-  matrixdata = x$get()
+  matrixdata = x$get()                   #Oh, it hasn't? better do it now!
   inv = solve(matrixdata, ...)
   x$setinv(inv)
   return(inv)
